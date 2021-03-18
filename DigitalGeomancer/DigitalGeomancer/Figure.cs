@@ -21,6 +21,35 @@ namespace DigitalGeomancer
             }
         }
 
+        /// <summary>
+        /// Constructs a Figure by combining two.
+        /// </summary>
+        /// <param name="figure1"></param>
+        /// <param name="figure2"></param>
+        public Figure(Figure figure1, Figure figure2)
+        {
+            Parts[FigurePart.Head] = !(figure1.Parts[FigurePart.Head] == figure2.Parts[FigurePart.Head]);
+            Parts[FigurePart.Neck] = !(figure1.Parts[FigurePart.Neck] == figure2.Parts[FigurePart.Neck]);
+            Parts[FigurePart.Body] = !(figure1.Parts[FigurePart.Body] == figure2.Parts[FigurePart.Body]);
+            Parts[FigurePart.Feet] = !(figure1.Parts[FigurePart.Feet] == figure2.Parts[FigurePart.Feet]);
+        }
+
+        /// <summary>
+        /// Constructs a Figure by using a specific Part of four figures. 
+        /// </summary>
+        /// <param name="figure1"></param>
+        /// <param name="figure2"></param>
+        /// <param name="figure3"></param>
+        /// <param name="figure4"></param>
+        /// <param name="part"></param>
+        public Figure(Figure figure1, Figure figure2, Figure figure3, Figure figure4, FigurePart part)
+        {
+            Parts[FigurePart.Head] = figure1.Parts[part];
+            Parts[FigurePart.Neck] = figure2.Parts[part];
+            Parts[FigurePart.Body] = figure3.Parts[part];
+            Parts[FigurePart.Feet] = figure4.Parts[part];
+        }
+
         private FigureType GetFigureType()
         {
             if (Parts[FigurePart.Head])
@@ -132,6 +161,9 @@ namespace DigitalGeomancer
         }
     }
 
+    /// <summary>
+    /// The four parts of a geomantic Figure.
+    /// </summary>
     public enum FigurePart
     {
         Head,
@@ -139,6 +171,10 @@ namespace DigitalGeomancer
         Body,
         Feet
     }
+
+    /// <summary>
+    /// The sixteen geomantic Figures.
+    /// </summary>
      public enum FigureType
     {
         Puer,
